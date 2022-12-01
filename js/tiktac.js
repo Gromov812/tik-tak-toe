@@ -8,6 +8,13 @@ let result = document.querySelector('#winner');
 let p1 = document.querySelector('#p1');
 let p2 = document.querySelector('#p2');
 
+localStorage.setItem('data',JSON.stringify({
+  'va':5,
+  'as':1
+}))
+console.log(JSON.parse(localStorage.getItem('data')));
+
+
 let [playerO, playerX, counter, winner,score] = [[],[],0,false,[0,0]];
 
 check.addEventListener('change', ()=>{
@@ -38,7 +45,8 @@ function compare(winCombs, playerComb){
             return false;
           }
     for (let el of rows) {
-        el.addEventListener('click', moveFunction)
+        el.addEventListener('click', moveFunction);
+        
     }
 
     function moveFunction() {
@@ -46,25 +54,25 @@ function compare(winCombs, playerComb){
         if((playerO.length + playerX.length) > 7 && !winner){
           result.innerHTML = 'It\'s a draw!';
         }
-          if (!(counter % 2) && !winner) {
-
+          if (!(counter % 2) && !winner && this.getAttribute('ready') == 'true') {
+          this.setAttribute('ready', 'false');
           this.innerHTML = 'X'
           playerX.push(this.value)
           counter++;
-
+          console.log( this.status != 'checked');
              if(playerX.length > 2 && compare(winCombs, playerX)) {
               result.innerHTML = 'Player 1 win!';
               score[0]++
               p1.innerHTML = `P1: ${score[0]}`
               winner = true;
             }
-          this.removeEventListener('click', moveFunction);
         }  
-          else if ((counter % 2) && !winner) {
+          else if ((counter % 2) && !winner && this.getAttribute('ready') == 'true') {
+            this.setAttribute('ready', 'false');
             this.innerHTML = 'O'
           playerO.push(this.value)
           counter++;
-
+          console.log(this.status);
              if(playerO.length > 2 && compare(winCombs, playerO)) {
                 result.innerHTML = 'Player 2 win!';
               winner = true;
@@ -72,7 +80,6 @@ function compare(winCombs, playerComb){
               p2.innerHTML = `P2: ${score[1]}`
              }
 
-            this.removeEventListener('click', moveFunction);
          }
         }
 
@@ -83,7 +90,7 @@ function compare(winCombs, playerComb){
     result.innerHTML = '';
     for (let el of rows) {
                   el.innerHTML = '';
-                  el.addEventListener('click', moveFunction);
+                  el.setAttribute('ready', 'true');
     }
 }
   resetScore.addEventListener('click', () => {
