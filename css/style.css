@@ -1,0 +1,70 @@
+html {
+    box-sizing: border-box;
+  }
+  *, *::before *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: inherit;
+  }
+  body{
+    display: flex;
+    align-items: center;
+    font-family: sans-serif;
+
+  }
+  .container {
+    background: linear-gradient(45deg, rgb(15, 123, 225), rgb(201, 51, 96));
+    border: 5px #ac71eb solid;
+    width: 300px;
+    height: 300px;
+    margin: 0 auto;
+  }
+  .block {
+    display: flex;
+    flex-direction:row;
+  }
+  .row {
+    list-style: none;
+    border: 1px #fff solid;
+    height: 98px;
+    width: 98px;
+    
+    font-size: 100px;
+    justify-content: center;
+    display: inherit;
+    align-items: center;
+    color: #fff;
+  }
+  .reset--button {
+    display: inherit;
+    margin: 0 auto;
+    margin-top: 20px;
+    height: 50px;
+    width: 150px;
+    background: #fff;
+    font-size: 20px;
+    border: 2px #d5d5d5 solid;
+  }
+  .reset--button:hover {
+    border-color: #9f9f9f;
+    background: #b7b7b7;
+    color: #fff;
+  }
+  .reset--button:active {
+    background: #7a7a7a;
+  }
+  .wrapper {
+    margin: 0 auto;
+    text-align: center;
+  }
+  .winner {
+    text-align: center;
+    height: 40px;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  #winner {
+    color: #b94646;
+    font-weight: bold;
+  }

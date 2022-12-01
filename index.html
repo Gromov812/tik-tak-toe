@@ -1,0 +1,37 @@
+<html>
+
+<head>
+<link rel="stylesheet" href="./css/style.css">
+</head>
+        <body>
+          <div class="wrapper">
+          <span>Score</span>
+          <div class="winner"><span id="p1">P1: 0</span><span id="winner"></span><span id="p2">P2: 0</span></div>
+
+         <div class="container">
+          <div class="block">
+            <li class="row active" value='0'></li>
+            <li class="row active" value='1'></li>
+            <li class="row active" value='2'></li>
+          </div>
+          <div class="block">
+            <li class="row active" value='3'></li>
+            <li class="row active" value='4'></li>
+            <li class="row active" value='5'></li>
+          </div>
+          <div class="block">
+            <li class="row active" value='6'></li>
+            <li class="row active" value='7'></li>
+            <li class="row active" value='8'></li>
+          </div>
+          <button class="reset--button" id="reset--button">New game</button>
+          <button class="reset--button" id="reset--score">Reset score</button>
+          <button class="reset--button" onclick="getRandomGradient()">Change BG</button>
+
+         </div>
+        </div>
+  </body>
+  <footer>
+    <script src="./js/tiktac.js"></script>
+  </footer>
+</html>
