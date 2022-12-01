@@ -1,5 +1,6 @@
 'use strict'
-
+let check = document.querySelector('#checkbox');
+let switcher = document.querySelector('#switcher');
 let rows = document.querySelectorAll('.active');
 let resetBtn = document.querySelector('#reset--button');
 let resetScore = document.querySelector('#reset--score');
@@ -8,6 +9,24 @@ let p1 = document.querySelector('#p1');
 let p2 = document.querySelector('#p2');
 
 let [playerO, playerX, counter, winner,score] = [[],[],0,false,[0,0]];
+
+
+
+check.addEventListener('change', ()=>{
+  if(check.checked) {
+    reset();
+    switcher.innerHTML = 'P1 move first';
+    counter = 0;
+  }
+  else {
+    reset();
+    switcher.innerHTML = 'P2 move first';
+    counter = 1;
+  }
+ 
+})
+
+
 
 let winCombs = [[0,1,2],[0,3,6],[0,4,8],[1,4,7],[2,4,6],[2,5,8],[3,4,5],[8,7,6]];
 
@@ -27,6 +46,7 @@ function compare(winCombs, playerComb){
     }
 
     function moveFunction() {
+
         if((playerO.length + playerX.length) > 7 && !winner){
           result.innerHTML = 'It\'s a draw!';
         }
@@ -60,16 +80,16 @@ function compare(winCombs, playerComb){
          }
         }
 
-  resetBtn.addEventListener('click', function reset(){
+  resetBtn.addEventListener('click', reset)
 
+  function reset(){
     [playerO, playerX, counter, winner] = [[],[],0,false]
     result.innerHTML = '';
-
     for (let el of rows) {
                   el.innerHTML = '';
                   el.addEventListener('click', moveFunction);
     }
-})
+}
   resetScore.addEventListener('click', () => {
     score = [0,0];
     p1.innerHTML = `P1: ${score[0]}`
