@@ -10,8 +10,6 @@ let p2 = document.querySelector('#p2');
 
 let [playerO, playerX, counter, winner,score] = [[],[],0,false,[0,0]];
 
-
-
 check.addEventListener('change', ()=>{
   if(check.checked) {
     reset();
@@ -25,8 +23,6 @@ check.addEventListener('change', ()=>{
   }
  
 })
-
-
 
 let winCombs = [[0,1,2],[0,3,6],[0,4,8],[1,4,7],[2,4,6],[2,5,8],[3,4,5],[8,7,6]];
 
