@@ -7,11 +7,9 @@ let result = document.querySelector('#winner');
 let p1 = document.querySelector('#p1');
 let p2 = document.querySelector('#p2');
 
-
 let [playerO, playerX, counter, winner,score] = [[],[],0,false,[0,0]];
 
 let winCombs = [[0,1,2],[0,3,6],[0,4,8],[1,4,7],[2,4,6],[2,5,8],[3,4,5],[8,7,6]];
-
 
 function compare(winCombs, playerComb){
             for( let i = 0 ; i < winCombs.length ; i++) {
@@ -65,12 +63,12 @@ function compare(winCombs, playerComb){
   resetBtn.addEventListener('click', function reset(){
 
     [playerO, playerX, counter, winner] = [[],[],0,false]
-
     result.innerHTML = '';
-          for (let el of rows) {
+
+    for (let el of rows) {
                   el.innerHTML = '';
                   el.addEventListener('click', moveFunction);
-          }
+    }
 })
   resetScore.addEventListener('click', () => {
     score = [0,0];
