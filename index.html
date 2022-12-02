@@ -4,9 +4,9 @@
 <link rel="stylesheet" href="./css/style.css">
 </head>
         <body>
-          
+          <div class="content">
           <div class="wrapper">
-            <div class="switcher"><span id="switcher">P1 move first</span><label class="switch"> 
+            <div class="switcher"><span id="switchText">P1 move first</span><label class="switch"> 
               <input id="checkbox" type="checkbox" checked>
               <span class="slider round"></span>
             </label></div>
@@ -29,18 +29,17 @@
             <li class="row active" value='8' ready=true></li>
           </div>
           <div class="buttons">
-          <button class="reset--button" id="reset--button">New game</button>
-          <button class="reset--button" id="reset--button">Save game</button>
+          <button class="reset--button" id="new--game--button">New game</button>
+          <button class="reset--button" id="save--button">Save game</button>
         </div>
         <div class="buttons">
           <button class="reset--button" id="reset--score">Reset score</button>
-          <button class="reset--button" id="reset--button">Load game</button>
-
-        </div>
-        <button class="reset--button" onclick="getRandomGradient()">Change BG</button>
-
+          <button class="reset--button" onclick="getRandomGradient()">Change BG</button>
         </div>
         </div>
+        </div>
+        <div class="saved--game"></div>
+      </div>
   </body>
   <footer>
     <script src="./js/tiktac.js"></script>
