@@ -8,16 +8,15 @@ let result = document.querySelector('#winner');
 let p1 = document.querySelector('#p1');
 let p2 = document.querySelector('#p2');
 
-localStorage.setItem('data',JSON.stringify({
-  'va':5,
-  'as':1
-}))
+console.log(rows);
+localStorage.setItem('data',JSON.stringify(rows))
 console.log(JSON.parse(localStorage.getItem('data')));
 
 
 let [playerO, playerX, counter, winner,score] = [[],[],0,false,[0,0]];
 
-check.addEventListener('change', ()=>{
+check.addEventListener('change', checkPriority)
+function checkPriority() {
   if(check.checked) {
     reset();
     switcher.innerHTML = 'P1 move first';
@@ -28,8 +27,7 @@ check.addEventListener('change', ()=>{
     switcher.innerHTML = 'P2 move first';
     counter = 1;
   }
- 
-})
+}
 
 let winCombs = [[0,1,2],[0,3,6],[0,4,8],[1,4,7],[2,4,6],[2,5,8],[3,4,5],[8,7,6]];
 
@@ -86,7 +84,8 @@ function compare(winCombs, playerComb){
   resetBtn.addEventListener('click', reset)
 
   function reset(){
-    [playerO, playerX, counter, winner] = [[],[],0,false]
+    [playerO, playerX, winner] = [[],[],false];
+    check.checked ? counter = 0 : counter = 1;
     result.innerHTML = '';
     for (let el of rows) {
                   el.innerHTML = '';
