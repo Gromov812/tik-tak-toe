@@ -1,19 +1,19 @@
 'use strict'
 
 /* Variables */
-
+let newGameButton = document.querySelector('#new--game--button');
 let saveGameButton = document.querySelector('#save--button');
-let check = document.querySelector('#checkbox');
+let resetScore = document.querySelector('#reset--score');
 let switchText = document.querySelector('#switchText');
 let rows = document.querySelectorAll('.active');
-let newGameButton = document.querySelector('#new--game--button');
-let resetScore = document.querySelector('#reset--score');
+let check = document.querySelector('#checkbox');
 let result = document.querySelector('#winner');
 let p1 = document.querySelector('#p1');
 let p2 = document.querySelector('#p2');
 
-let winCombs = [[0,1,2],[0,3,6],[0,4,8],[1,4,7],[2,4,6],[2,5,8],[3,4,5],[8,7,6]];
 let [playerX, playerO, counter, winner,score] = [[],[],0,false,[0,0]];
+
+let winCombs = [[0,1,2],[0,3,6],[0,4,8],[1,4,7],[2,4,6],[2,5,8],[3,4,5],[8,7,6]];
 
 
 /* check for saved games in localStorage and display saved games if it is*/
