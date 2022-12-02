@@ -24,7 +24,7 @@ if (localStorage.getItem('data')) {
   document.querySelector('.saved--game').innerHTML = `Saved game ${data['date']} <div><a onclick="loadGame()">Load saved</a></div> <div><a onclick="removeSaved()">Remove saved</a></div>`;
 }
 
-/* Event with callback func that stringify JSON on push variables in localStorage */
+/* Event on Save game Button that callback func with stringify JSON and push variables in localStorage */
 
 saveGameButton.addEventListener('click', () => {
 
@@ -36,6 +36,7 @@ saveGameButton.addEventListener('click', () => {
   let date = new Date;
   data['date'] = date.toLocaleString();
   data['score'] = score;
+  data['counter'] = counter;
   console.log(data);
   localStorage.setItem('data',JSON.stringify(data))
   document.querySelector('.saved--game').innerHTML = `Saved game ${data['date']} <div><a onclick="loadGame()">Load saved</a></div> <div><a onclick="removeSaved()">Remove saved</a></div>`;
@@ -53,6 +54,7 @@ function loadGame() {
   playerX = data['moves'][0];
   playerO = data['moves'][1];
   score = data['score'];
+  counter = data['counter'];
   p1.innerHTML = `P1: ${score[0]}`
   p2.innerHTML = `P2: ${score[1]}`
 
