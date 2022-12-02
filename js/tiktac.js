@@ -38,7 +38,6 @@ saveGameButton.addEventListener('click', () => {
   data['score'] = score;
   data['counter'] = counter;
   data['check'] = check.checked;
-  console.log(data);
   localStorage.setItem('data',JSON.stringify(data))
   document.querySelector('.saved--game').innerHTML = `Saved game ${data['date']} <div><a onclick="loadGame()">Load saved</a></div> <div><a onclick="removeSaved()">Remove saved</a></div>`;
 })
