@@ -1,6 +1,7 @@
 'use strict'
 
 /* Variables */
+
 let newGameButton = document.querySelector('#new--game--button');
 let saveGameButton = document.querySelector('#save--button');
 let resetScore = document.querySelector('#reset--score');
@@ -59,7 +60,15 @@ function loadGame() {
   switchText.innerHTML = check.checked ? 'P1 move first' : 'P2 move first';
   p1.innerHTML = `P1: ${score[0]}`
   p2.innerHTML = `P2: ${score[1]}`
-
+  
+  if (playerX.length > 2 && compare(winCombs, playerX)) {
+    result.innerHTML = 'Player 1 win!';
+    winner = true;
+  }
+  if (playerO.length > 2 && compare(winCombs, playerO)) {
+    result.innerHTML = 'Player 2 win!';
+    winner = true;
+  }
 }
 
 /* Func that erase any saved data called 'data' on localStorage*/
