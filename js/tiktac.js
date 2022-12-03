@@ -60,7 +60,7 @@ function loadGame() {
   switchText.innerHTML = check.checked ? 'P1 move first' : 'P2 move first';
   p1.innerHTML = `P1: ${score[0]}`
   p2.innerHTML = `P2: ${score[1]}`
-  
+
   if (playerX.length > 2 && compare(winCombs, playerX)) {
     result.innerHTML = 'Player 1 win!';
     winner = true;
@@ -98,15 +98,13 @@ check.addEventListener('change', checkPriority)
 /* Compare function check for player Combination include any winning combination */
 
 function compare(winCombs, playerComb){
-            for( let i = 0 ; i < winCombs.length ; i++) {
-              let flag = true;
-            
-              winCombs[i].forEach(element => {
-                if (!playerComb.includes(element)) flag = false;
-              });
+
+            let flag = false;
+            for (let el of winCombs) {
+              flag = el.every(elem => playerComb.includes(elem));
               if (flag) return true;
             }
-            return false;
+            return flag;
           }
 
  /* Call for function moveFunction() when click on any cell */
