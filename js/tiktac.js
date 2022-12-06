@@ -6,6 +6,7 @@ let newGameButton = document.querySelector('#new--game--button');
 let saveGameButton = document.querySelector('#save--button');
 let resetScore = document.querySelector('#reset--score');
 let switchText = document.querySelector('#switchText');
+let container = document.querySelector('.container');
 let rows = document.querySelectorAll('.active');
 let check = document.querySelector('#checkbox');
 let result = document.querySelector('#winner');
@@ -82,12 +83,12 @@ function removeSaved() {
 
 function checkPriority() {
   if(check.checked) {
-    reset();
+    newGame();
     switchText.innerHTML = 'P1 move first';
     counter = 0;
   }
   else {
-    reset();
+    newGame();
     switchText.innerHTML = 'P2 move first';
     counter = 1;
   }
@@ -107,15 +108,19 @@ function compare(winCombs, playerComb){
             return flag;
           }
 
- /* Call for function moveFunction() when click on any cell */
+ /* Call for function gamePlay() when click on any cell */
 
     for (let el of rows) {
-        el.addEventListener('click', moveFunction);
+        el.addEventListener('click', gamePlay);
     }
 
 /* Function of gameplay */
 
-    function moveFunction() {
+    function gamePlay() {
+
+      if (container.classList.contains('box-shadow')) {
+        container.classList.remove('box-shadow');
+      }
 
                   /* Check for draw */ 
 
@@ -131,6 +136,7 @@ function compare(winCombs, playerComb){
           playerX.push(this.value)
           counter++;
              if (playerX.length > 2 && compare(winCombs, playerX)) {
+              container.classList.add('box-shadow');
               result.innerHTML = 'Player 1 win!';
               score[0]++
               p1.innerHTML = `P1: ${score[0]}`
@@ -147,6 +153,7 @@ function compare(winCombs, playerComb){
           counter++;
 
              if (playerO.length > 2 && compare(winCombs, playerO)) {
+              container.classList.add('box-shadow');
                 result.innerHTML = 'Player 2 win!';
               winner = true;
               score[1]++
@@ -158,15 +165,19 @@ function compare(winCombs, playerComb){
 
   /* Event on new game button erase players arrays, set winner = false, check for who's first to move, erase content from cells */
         
-  newGameButton.addEventListener('click', reset)
+  newGameButton.addEventListener('click', newGame)
 
-  function reset(){
+  function newGame(){
     [playerO, playerX, winner] = [[],[],false];
     check.checked ? counter = 0 : counter = 1;
     result.innerHTML = '';
     for (let el of rows) {
                   el.innerHTML = '';
                   el.setAttribute('ready', 'true');
+                  
+    }
+    if (container.classList.contains('box-shadow')) {
+      container.classList.remove('box-shadow');
     }
 }
 
