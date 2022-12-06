@@ -200,4 +200,4 @@ document.querySelector('.container').style.background = bg;
 
 /* Call for func */
 
-getRandomGradient()
+//getRandomGradient()
